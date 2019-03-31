@@ -1,0 +1,141 @@
+{% extends "app/base.html" %}
+{% load static %}
+{% load index %}
+
+<!-- ページのタイトル -->
+{% block pagetitle%}
+<title>{{ post.title }}</title>
+{% endblock %}
+
+<!-- css -->
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static "app/css/post_detail.css" %}">
+{% endblock %}
+
+<!-- js -->
+{% block js %}
+<!--nav固定のjquery -->
+<script type="text/javascript">
+$(function() {
+var $win = $(window),
+  $main = $('main'),
+  $nav = $('nav'),
+  navHeight = $nav.outerHeight(),
+  navPos = $nav.offset().top,
+  fixedClass = 'is-fixed';
+
+$win.on('load scroll', function() {
+var value = $(this).scrollTop();
+if ( value > navPos ) {
+  $nav.addClass(fixedClass);
+  $main.css('margin-top', navHeight);
+} else {
+  $nav.removeClass(fixedClass);
+  $main.css('margin-top', '0');
+}
+});
+});
+</script>
+{% endblock%}
+
+<!-- header -->
+{% block header %}
+<header>
+  <div class="header_right">
+    <li><a href="{% url "app:about_blog" %}">このブログについて</a></li>
+    <li><a href="{% url "app:about_writer" %}">管理人</a></li>
+  </div>
+  <div class="title">
+    <a href="{% url "app:top" %}">
+      <p class="main-title">Actuary新時代</p>
+      <p class="subtitle">～改新の軌跡～</p>
+    </a>
+  </div>
+</header>
+{% endblock %}
+
+<!-- nav -->
+{% block nav %}
+<nav>
+  <ul class="menu">
+    <li class="menu_home">
+      <a href="{% url "app:top" %}"><p>HOME</p></a>
+    </li>
+    {% for category in category_list %}
+    <li class="menu__single">
+      <input type="checkbox" id="label{{ forloop.counter }}" class="cssacc" />
+      <label for="label{{ forloop.counter }}">{{ category.name }}</label>
+      <ul class="menu__second-level">
+        {% for subcategory in subcategory_list %}
+        {% ifequal subcategory.target_category.name category.name %}
+        <li><a href="{% url "app:subcategory" subcategory.name %}">{{ subcategory.name }}</a></li>
+        {% endifequal %}
+        {% endfor %}
+      </ul>
+    </li>
+    {% endfor %}
+    <li class="menu_search">
+      <form action="{% url "app:top" %}" class="search_form">
+        {{ global_form.keyword }}
+        <button type="submit" class="search_button"><i class="fas fa-search"></i>
+        </button>
+      </form>
+    </li>
+  </ul>
+</nav>
+{% endblock %}
+
+<!-- main -->
+{% block main %}
+<main>
+  <div class="article">
+    <div class="bread">
+      <ol>
+        <li><a href="{% url "app:top" %}">HOME</a><span style="margin-right: 0.5em"></span>><span style="margin-right: 1em"></span></li>
+        <li>{{ post.target_subcategory.target_category.name }}<span style="margin-right: 0.5em"></span>><span style="margin-right: 1em"></span></li>
+        <li><a href="{% url "app:subcategory" post.target_subcategory.name %}">{{ post.target_subcategory.name }}</a><span style="margin-right: 0.5em"></span>><span style="margin-right: 1em"></span></li>
+        <li>{{ post.title }}</li>
+      </ol>
+    </div>
+    <div class="title_article">
+      <h1>{{ post.title }}</h1>
+    </div>
+    <div class="created_datetime">
+      {{ post.created_datetime|date:"Y/m/d" }}
+    </div>
+    <div class="tag">
+      <ul>
+        {% for t in post.tag.all %}
+        <li><a href="{% url "app:tag" t.name %}">{{ t }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="table_content">
+      <span class="table_content_title"><i class="far fa-list-alt"></i>目次</span>
+      <ol>
+        {{ post.main_sentence | index |safe}}
+      </ol>
+    </div>
+    <div class="main_sentance">
+      {{ post.main_sentence | safe | linebreaks}}
+    </div>
+
+    <!-- form -->
+    <form action="" method="POST" class="comment_form">
+      <p>コメントやご質問はこちらからお願いします。</p>
+      {{ form.non_field_erros }}
+      {% for field in form %}
+      <div class="form-group">
+        <label for="{{  field.id_for_label }}">{{  field.label_tag }}</label>
+        <p>{{ field }}</p>
+        {{ field.erros }}
+      </div>
+      {% endfor %}
+      {% csrf_token %}
+      <div class="form_button">
+        <button type="submit" >送信</button>
+      </div>
+    </form>
+  </div>
+</main>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends "app/base.html" %}
+{% load static %}
+
+<!-- ページのタイトル -->
+{% block pagetitle %}
+<title>Actuary新時代</title>
+{% endblock %}
+
+<!-- css -->
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static "app/css/top.css" %}">
+{% endblock %}
+
+<!-- header -->
+{% block header %}
+<header>
+  <div class="header_right">
+    <li><a href="{% url "app:about_blog" %}">このブログについて</a></li>
+    <li><a href="{% url "app:about_writer" %}">管理人</a></li>
+  </div>
+  <div class="title">
+    <a href="{% url "app:top" %}">
+      <p class="main-title">Actuary新時代</p>
+      <p class="subtitle">～改新の軌跡～</p>
+    </a>
+  </div>
+</header>
+{% endblock %}
+
+<!-- main -->
+{% block main %}
+<main>
+  <div style="width: 70%;margin: 0px auto;">
+      <hr />
+      {% for post in post_list %}
+      <div>
+        <h3>{{ post.title }}</h3>
+        <div style="text-align: right;">
+          <a href="{% url 'app:post_detail' post.pk %}">記事を読む</a>
+        </div>
+      </div>
+      <hr />
+      {% endfor %}
+  </div>
+</main>
+{% endblock %}

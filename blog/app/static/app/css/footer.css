@@ -1,0 +1,21 @@
+footer{
+  width: auto;
+  text-align: center;
+  background-color: #313534;
+  height: 120px;
+  color: #F4EFDB;
+}
+.SNS{
+  height: 45px;
+  width: auto;
+  padding-top: 15px;
+}
+footer li{
+  list-style: none;
+  display: inline;
+  padding: 0 10px;
+}
+.SNS a{
+  color: #F4EFDB;
+  font-size: 25px;
+}

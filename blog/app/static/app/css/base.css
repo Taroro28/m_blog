@@ -1,0 +1,28 @@
+/* 自動調整の削除 */
+*{
+  padding: 0;
+  margin: 0;
+}
+
+/* フォントの読み込み */
+@font-face {
+	font-family: 'MyFont';
+	src: url(../font/ipagp.ttf);
+}
+
+/* フォントの設定と背景の色 */
+body {
+	font-family: MyFont;
+  background-color: rgba(244, 239, 219, 0.75);
+}
+
+/* リンクの設定 */
+a {
+  text-decoration: none;
+  color: blue;
+}
+a:hover{
+  filter: alpha(opacity=50);
+  -moz-opacity: 0.5;
+  opacity: 0.5;
+}

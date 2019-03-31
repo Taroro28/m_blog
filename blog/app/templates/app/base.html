@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+
+    <!-- ページのタイトル -->
+    {% block pagetitle%}
+    <title>Actuary新時代</title>
+    {% endblock %}
+
+    <!-- jquery -->
+    <script type="text/javascript" src="{% static "app/js/jquery-3.3.1.min.js"%}"></script>
+
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+    <!-- css -->
+    {% block css %}
+    {% endblock %}
+
+    <!-- js -->
+    {% block js %}
+    {% endblock %}
+
+  </head>
+  <body>
+
+    <!-- header -->
+    {% block header %}
+    {% endblock header%}
+
+    <!-- nav -->
+    {% block nav %}
+    {% endblock %}
+
+    <!-- main -->
+    {% block main %}
+    {% endblock %}
+
+    <!-- footerの読み込み -->
+    <footer>
+      <div id="footer-inner" class="footer_container">
+        <div class="SNS">
+          <ul>
+            <li><a href="#"><i class="fab fa-twitter-square"></i></a></li>
+            <li><a href="#"><i class="fab fa-facebook-square"></i></a></li>
+          </ul>
+        </div>
+        <p>コピーライト</p>
+      </div>
+    </footer>
+  </body>
+</html>

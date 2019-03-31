@@ -1,0 +1,98 @@
+{% extends "app/base.html" %}
+{% load static %}
+
+<!-- css -->
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static "app/css/about_writer.css" %}">
+{% endblock %}
+
+<!-- js -->
+{% block js %}
+<!--nav固定のjquery -->
+<script type="text/javascript">
+$(function() {
+var $win = $(window),
+  $main = $('main'),
+  $nav = $('nav'),
+  navHeight = $nav.outerHeight(),
+  navPos = $nav.offset().top,
+  fixedClass = 'is-fixed';
+
+$win.on('load scroll', function() {
+var value = $(this).scrollTop();
+if ( value > navPos ) {
+  $nav.addClass(fixedClass);
+  $main.css('margin-top', navHeight);
+} else {
+  $nav.removeClass(fixedClass);
+  $main.css('margin-top', '0');
+}
+});
+});
+</script>
+{% endblock%}
+
+<!-- header -->
+{% block header %}
+<header>
+  <div class="header_right">
+    <li><a href="{% url "app:about_blog" %}">このブログについて</a></li>
+    <li><a href="{% url "app:about_writer" %}">管理人</a></li>
+  </div>
+  <div class="title">
+    <a href="{% url "app:top" %}">
+      <p class="main-title">Actuary新時代</p>
+      <p class="subtitle">～改新の軌跡～</p>
+    </a>
+  </div>
+</header>
+{% endblock %}
+
+<!-- nav -->
+{% block nav %}
+<nav>
+  <ul class="menu">
+    <li>
+      <a href="{% url "app:top" %}"><p>HOME</p></a>
+    </li>
+    <li class="menu__single">
+      <input type="checkbox" id="label1" class="cssacc" />
+      <label for="label1">試験対策</label>
+      <ul class="menu__second-level">
+        <li><a href="#">年金</a></li>
+        <li><a href="#">生命保険</a></li>
+        <li><a href="#">損害保険</a></li>
+        <li><a href="#">数学</a></li>
+        <li><a href="#">会計</a></li>
+      </ul>
+    </li>
+    <li class="menu__single">
+      <input type="checkbox" id="label2" class="cssacc" />
+      <label for="label2">アクチュアリーについて</label>
+      <ul class="menu__second-level">
+        <li><a href="#">サブカテゴリー１</a></li>
+        <li><a href="#">サブカテゴリー２</a></li>
+        <li><a href="#">サブカテゴリー３</a></li>
+      </ul>
+    </li>
+    <li class="menu__single">
+      <input type="checkbox" id="label3" class="cssacc" />
+      <label for="label3">カテゴリー３</label>
+      <ul class="menu__second-level">
+        <li><a href="#">サブカテゴリー１</a></li>
+        <li><a href="#">サブカテゴリー２</a></li>
+        <li><a href="#">サブカテゴリー３</a></li>
+      </ul>
+    </li>
+    <li class="menu__single">
+      <input type="checkbox" id="label4" class="cssacc" />
+      <label for="label4">カテゴリー４</label>
+      <ul class="menu__second-level">
+        <li><a href="#">サブカテゴリー１</a></li>
+        <li><a href="#">サブカテゴリー２</a></li>
+        <li><a href="#">サブカテゴリー３</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+{% endblock %}
