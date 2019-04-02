@@ -87,4 +87,16 @@ class PostDetailView(ModelFormMixin, DetailView):
         context["subcategory_list"] = SubCategory.objects.all()
         global_form = PostSearchForm()
         context["global_form"] = global_form
+
+        post_pk = self.kwargs["pk"]
+        tar_post = Post.objects.get(id=post_pk)
+        tar_tags = tar_post.tag
+        tar_sub = tar_post.target_subcategory
+        filtered_posts = Post.objects.filter(tag__in=[tag for tag in tar_tags.all()]).exclude(id=post_pk)
+        if len(filtered_posts) >= 3:
+            context["r_post_list"] = filtered_posts[:3]
+        else:
+            context["r_post_list"] = Post.objects.order_by("-created_datetime").filter(
+                Q(tag__in=[tag for tag in tar_tags.all()]) | Q(target_subcategory=tar_sub)
+            ).exclude(id=post_pk)[:3]
         return context

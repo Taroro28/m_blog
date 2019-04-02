@@ -105,6 +105,18 @@
       {{ post.main_sentence | headline | safe | linebreaks}}
     </div>
 
+    <div class="recommend_posts">
+      <h2>関連記事</h2>
+      <div class="recommend_posts_content">
+        {% for r_post in r_post_list %}
+        <ul>
+          <li>
+            <a href="{% url 'app:post_detail' r_post.pk %}">{{ r_post.title }}</a>
+          </li>
+        </ul>
+        {% endfor %}
+      </div>
+    </div>
     <!-- form -->
     <form action="" method="POST" class="comment_form">
       <p>コメントやご質問はこちらからお願いします。</p>
