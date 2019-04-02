@@ -15,6 +15,7 @@ main{
 .bread {
   padding-bottom: 10px;
   font-weight: bold;
+  color: #3b1b1e;
 }
 .bread li:first-child a::before{
   font-family: 'Font Awesome 5 Free';
@@ -74,6 +75,9 @@ main{
     padding: 0.5em 1em;
     border: solid 3px #3b1b1e;
     border-radius: 0 20px 20px 20px;
+}
+.table_content a{
+  color: #313534;
 }
 .table_content .table_content_title {
     position: absolute;

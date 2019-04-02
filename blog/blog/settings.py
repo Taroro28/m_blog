@@ -65,7 +65,8 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
             ],
             'libraries':{
-            'index': 'app.templatetags.mokuzi',
+            'index': 'app.templatetags.filter',
+            "headline": 'app.templatetags.filter',
 
             }
         },

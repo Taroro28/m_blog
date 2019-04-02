@@ -1,6 +1,7 @@
 {% extends "app/base.html" %}
 {% load static %}
 {% load index %}
+{% load headline %}
 
 <!-- ページのタイトル -->
 {% block pagetitle%}
@@ -15,27 +16,8 @@
 <!-- js -->
 {% block js %}
 <!--nav固定のjquery -->
-<script type="text/javascript">
-$(function() {
-var $win = $(window),
-  $main = $('main'),
-  $nav = $('nav'),
-  navHeight = $nav.outerHeight(),
-  navPos = $nav.offset().top,
-  fixedClass = 'is-fixed';
-
-$win.on('load scroll', function() {
-var value = $(this).scrollTop();
-if ( value > navPos ) {
-  $nav.addClass(fixedClass);
-  $main.css('margin-top', navHeight);
-} else {
-  $nav.removeClass(fixedClass);
-  $main.css('margin-top', '0');
-}
-});
-});
-</script>
+<script type="text/javascript" src="{% static "app/js/fixed_nav.js"%}"></script>
+<script type="text/javascript" src="{% static "app/js/smooth_scroll.js"%}"></script>
 {% endblock%}
 
 <!-- header -->
@@ -76,9 +58,10 @@ if ( value > navPos ) {
     {% endfor %}
     <li class="menu_search">
       <form action="{% url "app:top" %}" class="search_form">
-        {{ global_form.keyword }}
-        <button type="submit" class="search_button"><i class="fas fa-search"></i>
-        </button>
+        <div class="search_content">
+          {{ global_form.keyword }}
+          <button type="submit" class="search_button"><i class="fas fa-search"></i></button>
+        </div>
       </form>
     </li>
   </ul>
@@ -117,7 +100,7 @@ if ( value > navPos ) {
       </ol>
     </div>
     <div class="main_sentance">
-      {{ post.main_sentence | safe | linebreaks}}
+      {{ post.main_sentence | headline | safe | linebreaks}}
     </div>
 
     <!-- form -->
