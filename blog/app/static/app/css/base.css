@@ -26,3 +26,47 @@ a:hover{
   -moz-opacity: 0.5;
   opacity: 0.5;
 }
+
+/*パソコン・スマホ共通のCSS*/
+#PageTopBtn {
+    position: fixed; /*ボタンの配置場所を固定*/
+    bottom: 30px; /*下からのボタンの配置場所を指定*/
+    right: 20px; /*右からのボタンの配置場所を指定*/
+}
+#PageTopBtn a {
+    display: block; /*配置の調整*/
+    text-decoration: none; /*文字の下線を消す*/
+    color: #3b1b1e;/*文字の色*/
+    background: #fff; /*ボタンの背景色*/
+    text-align: center; /*文字を中央に配置*/
+    border: solid 2px #3b1b1e;
+    border-radius: 50%; /*ボタンの角を少し丸くする*/
+    outline: none; /*クリックしたときの黒い枠を消す*/
+}
+#PageTopBtn a:hover {
+    text-decoration: none;
+}
+
+/*パソコンで表示する場合のCSS*/
+@media (min-width: 768px) {
+#PageTopBtn {
+    font-size: 25px; /*文字のサイズ*/
+}
+#PageTopBtn a {
+    width: 50px; /*ボタンの幅*/
+    height: 38px; /*ボタンの高さ*/
+    padding: 12px 0 0 0; /*文字の配置場所の調整*/
+}
+}
+
+/*スマホで表示する場合のCSS*/
+@media (max-width: 767px) {
+#PageTopBtn {
+    font-size: 20px;
+}
+#PageTopBtn a {
+    width: 50px;
+    height: 50px;
+    padding: 8px 0;
+}
+}
