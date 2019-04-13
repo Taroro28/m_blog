@@ -63,6 +63,18 @@ class Comment(models.Model):
     # 投稿者の名前
     name = models.CharField("名前" ,max_length=50)
 
+    # 年齢
+    age = models.PositiveSmallIntegerField("年齢", default=25)
+
+    # 性別の選択肢
+    SEX_CHOICES = (
+        ("男性", "男性"),
+        ("女性", "女性"),
+    )
+
+    # 性別
+    sex = models.CharField("性別", max_length=5, choices=SEX_CHOICES, default="男性")
+
     # 内容
     text = models.TextField("内容")
 

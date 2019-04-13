@@ -92,7 +92,7 @@ class PostDetailView(ModelFormMixin, DetailView):
         context = super(PostDetailView, self).get_context_data(**kwargs)
         context["category_list"] = Category.objects.all()
         context["subcategory_list"] = SubCategory.objects.all()
-
+        context["comment_list"] = Comment.objects.order_by("-created_datetime")
         # 検索ボックス
         global_form = PostSearchForm()
         context["global_form"] = global_form

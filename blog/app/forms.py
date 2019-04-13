@@ -5,10 +5,11 @@ from .models import Comment
 class CommentCreateForm(forms.ModelForm):
     class Meta:
         model = Comment
-        fields = ("name","text", )
+        fields = ("name", "sex", "age", "text", )
         widgets = {
-            "name": forms.TextInput(attrs={"placeholder": "お名前を入力して下さい。"}),
+            "name": forms.TextInput(attrs={"class": "comment_name", "placeholder": "お名前を入力して下さい。"}),
             "text": forms.Textarea(attrs={"placeholder": "コメントを入力して下さい。"}),
+            "age": forms.NumberInput(attrs={"class": "comment_age"}),
         }
 
 # 記事検索

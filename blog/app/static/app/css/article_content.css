@@ -160,7 +160,7 @@ h2:before{
 .comment_form p{
   margin-bottom: 10px;
 }
-.comment_form input{
+.comment_name{
   font-size: 20px;
   width: 400px;
   margin-bottom: 10px;
@@ -187,8 +187,15 @@ h2:before{
   cursor: pointer;
   cursor: hand;
 }
-
 .comment_form button:hover {
   background: #3b1b1e;
   color: white;
+}
+.comment_age{
+  font-size: 18px;
+  width: 2.5em;
+}
+.comment_subtable{
+  border: solid 2px black;
+  margin: 1em 1em;
 }

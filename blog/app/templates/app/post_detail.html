@@ -119,6 +119,17 @@
         {% endfor %}
       </div>
     </div>
+    <h2>コメント</h2>
+    <br>
+    <div class="comment_table">
+      {% for comment in comment_list %}
+      <div class="comment_subtable">
+        {{ comment.name }}さん
+        {{ comment.created_datetime }}
+        {{ comment.text | linebreaks}}
+      </div>
+      {% endfor %}
+    </div>
     <!-- form -->
     <form action="" method="POST" class="comment_form">
       <p>コメントやご質問はこちらからお願いします。</p>
