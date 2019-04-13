@@ -9,21 +9,29 @@
     color: #F4EFDB;
     background-color: #313534;
 }
+
+/* HOME */
+.menu_home{
+  width: 10%;
+    text-align: center;
+}
+
+/* 検索フォーム */
+.menu_search{
+  width: 22%;
+}
+
+/* カテゴリーとサブカテゴリー */
 .menu > li {
     float: left;
     height: 50px;
     line-height: 50px;
-    background-color: #313534;
-}
-.menu_home{
-    width: 10%;
 }
 .menu__single{
   width: 17%;
 }
-.menu_search{
-  width: 22%;
-}
+
+/* 透明にならないように　*/
 .menu > li a {
     display: block;
     color: #F4EFDB;
@@ -39,12 +47,6 @@
   left: 0;
   z-index: 2;
   width: 100%;
-}
-
-/* HOME */
-.menu p{
-  text-align: center;
-  color: #F4EFDB;
 }
 
 /* チェックボックスの非表示 */
@@ -68,6 +70,7 @@
     content: '\f107';
     font-weight: 900;
 }
+
 .menu .menu__single:hover {
   background: #788279;
   -webkit-transition: all .5s;
@@ -94,13 +97,10 @@ ul.menu__second-level {
     visibility: hidden;
     opacity: 0;
     z-index: 1;
-    list-style: none;
 }
-
 .menu > li.menu__single {
     position: relative;
 }
-
 li.menu__single ul.menu__second-level {
     position: absolute;
     top: 40px;
