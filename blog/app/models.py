@@ -84,5 +84,8 @@ class Comment(models.Model):
     # どの記事についてか
     post = models.ForeignKey(Post, on_delete=models.CASCADE, verbose_name="対象記事", null=True)
 
+    # 返信
+    reply = models.TextField("返信内容", default="まだ返信がありません。")
+
     def __str__(self):
         return self.text[:20]

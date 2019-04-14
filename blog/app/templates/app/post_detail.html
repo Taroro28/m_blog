@@ -126,7 +126,10 @@
       <div class="comment_subtable">
         {{ comment.name }}さん
         {{ comment.created_datetime }}
-        {{ comment.text | linebreaks}}
+        {{ comment.text | linebreaks }}
+        <br>
+        管理人からの返信
+        {{ comment.reply | linebreaks }}
       </div>
       {% endfor %}
     </div>

@@ -12,8 +12,8 @@ class PostAdmin(admin.ModelAdmin):
 
 # コメント
 class CommentAdmin(admin.ModelAdmin):
-    list_display = ("post", "name", "created_datetime", "text")
-    list_display_links = ("post", "name", "created_datetime")
+    list_display = ("post", "name", "created_datetime", "sex", "age", "text", "reply")
+    list_display_links = ("post", "name",  "sex", "age", "created_datetime")
 
 # カテゴリー
 class CategoryAdmin(admin.ModelAdmin):
