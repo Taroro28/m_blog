@@ -1,11 +1,8 @@
 header{
   width: auto;
-  height: 270px;
+  height: 13.5rem;
   background-image: url("header.jpg");
   background-position: 0 85%;
-}
-header li{
-  list-style: none;
 }
 header a{
   color: #F4EFDB;
@@ -16,20 +13,19 @@ header a{
 
 /* Actuary新時代 */
 .main-title{
-  font-size: 70px;
-  padding-top: 70px;
+  font-size: 3.5rem;
+  padding-top: 3.5rem;
   font-weight: normal;
 }
 
 /* ～改新の軌跡～ */
 .subtitle{
-  font-size: 50px;
+  font-size: 2.5rem;
 }
 
 /* 管理人とこのブログについて */
 .header_right li{
   float: right;
-  margin: 0 20px;
-  padding-top: 20px;
-  font-size: 20px;
+  margin: 0 1rem;
+  padding-top: 1rem;
 }

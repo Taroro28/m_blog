@@ -1,8 +1,4 @@
-/* 自動調整の削除 */
-*{
-  padding: 0;
-  margin: 0;
-}
+@import "ress.css";
 
 /* フォントの読み込み */
 @font-face {
@@ -30,8 +26,8 @@ a:hover{
 /*パソコン・スマホ共通のCSS*/
 #PageTopBtn {
     position: fixed; /*ボタンの配置場所を固定*/
-    bottom: 30px; /*下からのボタンの配置場所を指定*/
-    right: 20px; /*右からのボタンの配置場所を指定*/
+    bottom: 1.5rem; /*下からのボタンの配置場所を指定*/
+    right: 1rem; /*右からのボタンの配置場所を指定*/
 }
 #PageTopBtn a {
     display: block; /*配置の調整*/
@@ -50,23 +46,27 @@ a:hover{
 /*パソコンで表示する場合のCSS*/
 @media (min-width: 768px) {
 #PageTopBtn {
-    font-size: 25px; /*文字のサイズ*/
+    font-size: 1.25rem; /*文字のサイズ*/
 }
 #PageTopBtn a {
-    width: 50px; /*ボタンの幅*/
-    height: 38px; /*ボタンの高さ*/
-    padding: 12px 0 0 0; /*文字の配置場所の調整*/
+    width: 2.5rem; /*ボタンの幅*/
+    height: 2.5rem; /*ボタンの高さ*/
+    padding: 0.5rem 0 0 0; /*文字の配置場所の調整*/
 }
 }
 
 /*スマホで表示する場合のCSS*/
 @media (max-width: 767px) {
 #PageTopBtn {
-    font-size: 20px;
+    font-size: 1rem;
 }
 #PageTopBtn a {
-    width: 50px;
-    height: 50px;
-    padding: 8px 0;
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: 0.4rem 0;
 }
+}
+
+li{
+	list-style: none;
 }

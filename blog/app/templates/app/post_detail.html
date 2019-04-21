@@ -25,18 +25,16 @@
 <!-- header -->
 {% block header %}
 <header>
-  <div class="header_right">
+  <ul class="header_right">
     <li><a href="{% url "app:about_blog" %}">このブログについて</a></li>
     <li><a href="{% url "app:about_writer" %}">管理人</a></li>
-  </div>
-
+  </ul>
   <div class="title">
     <a href="{% url "app:top" %}">
       <p class="main-title" >Actuary新時代</p>
       <p class="subtitle">～改新の軌跡～</p>
     </a>
   </div>
-
 </header>
 {% endblock %}
 
@@ -76,27 +74,21 @@
 {% block main %}
 <main>
   <div class="article">
-    <div class="bread">
-      <ol>
-        <li><a href="{% url "app:top" %}">HOME</a><span style="margin-right: 0.5em"></span>><span style="margin-right: 1em"></span></li>
-        <li>{{ post.target_subcategory.target_category.name }}<span style="margin-right: 0.5em"></span>><span style="margin-right: 1em"></span></li>
-        <li><a href="{% url "app:subcategory" post.target_subcategory.name %}">{{ post.target_subcategory.name }}</a><span style="margin-right: 0.5em"></span>><span style="margin-right: 1em"></span></li>
-        <li>{{ post.title }}</li>
-      </ol>
-    </div>
-    <div class="title_article">
-      <h1>{{ post.title }}</h1>
-    </div>
+    <ol class="bread">
+      <li><a href="{% url "app:top" %}">HOME</a><span style="margin-right: 0.5rem"></span>><span style="margin-right: 0.75rem"></span></li>
+      <li>{{ post.target_subcategory.target_category.name }}<span style="margin-right: 0.5rem"></span>><span style="margin-right: 0.75rem"></span></li>
+      <li><a href="{% url "app:subcategory" post.target_subcategory.name %}">{{ post.target_subcategory.name }}</a><span style="margin-right: 0.5rem"></span>><span style="margin-right: 0.75rem"></span></li>
+      <li>{{ post.title }}</li>
+    </ol>
+    <h1>{{ post.title }}</h1>
     <div class="created_datetime">
       {{ post.created_datetime|date:"Y/m/d" }}
     </div>
-    <div class="tag">
-      <ul>
-        {% for t in post.tag.all %}
-        <li><a href="{% url "app:tag" t.name %}">{{ t }}</a></li>
-        {% endfor %}
-      </ul>
-    </div>
+    <ul class="tag">
+      {% for t in post.tag.all %}
+      <li><a href="{% url "app:tag" t.name %}">{{ t }}</a></li>
+      {% endfor %}
+    </ul>
     <div class="table_content">
       <span class="table_content_title"><i class="far fa-list-alt"></i>目次</span>
       <ol>
@@ -106,33 +98,29 @@
     <div class="main_sentance">
       {{ post.main_sentence | headline | safe | linebreaks}}
     </div>
-
     <div class="recommend_posts">
       <h2>関連記事</h2>
-      <div class="recommend_posts_content">
+      <ul class="recommend_posts_content">
         {% for r_post in r_post_list %}
-        <ul>
-          <li>
-            <a href="{% url 'app:post_detail' r_post.pk %}">{{ r_post.title }}</a>
-          </li>
-        </ul>
+        <li>
+          <a href="{% url 'app:post_detail' r_post.pk %}">{{ r_post.title }}</a>
+        </li>
         {% endfor %}
-      </div>
+      </ul>
     </div>
     <h2>コメント</h2>
     <br>
+    {% for comment in comment_list %}
     <div class="comment_table">
-      {% for comment in comment_list %}
-      <div class="comment_subtable">
-        {{ comment.name }}さん
-        {{ comment.created_datetime }}
-        {{ comment.text | linebreaks }}
-        <br>
-        管理人からの返信
-        {{ comment.reply | linebreaks }}
-      </div>
-      {% endfor %}
+      {{ comment.name }}さん
+      {{ comment.created_datetime }}
+      {{ comment.text | linebreaks }}
+      <br>
+      管理人からの返信
+      {{ comment.reply | linebreaks }}
     </div>
+    {% endfor %}
+    <a class="twitter-timeline" href="https://twitter.com/ActuaryYoshi?ref_src=twsrc%5Etfw">Tweets by ActuaryYoshi</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
     <!-- form -->
     <form action="" method="POST" class="comment_form">
       <p>コメントやご質問はこちらからお願いします。</p>
